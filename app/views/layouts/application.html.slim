@@ -1,0 +1,11 @@
+doctype html
+html(data-ng-app='wikipediaDailyEvents' data-ng-csp)
+  head
+    base(href='/')
+    meta(charset='utf8')
+    title Wikipedia Daily Events
+    = stylesheet_link_tag('assets/application.css')
+    = csrf_meta_tags
+
+  body
+    div(data-ui-view autoscroll='true')

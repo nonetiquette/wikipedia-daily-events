@@ -1,0 +1,36 @@
+<navbar></navbar>
+
+.container
+  .row
+    .col-xs-12
+      h5
+        a(href='/') &lt; Back Home
+  .row
+    .col-xs-12
+      h2 
+        | Now Viewing Events&nbsp;
+        span(data-ng-if='!$ctrl.error') for {{ $ctrl.occurrenceDate.format("MMMM Do, YYYY") }}
+
+      .alert.alert-danger(role='alert' data-ng-if='$ctrl.events.length === 0 || $ctrl.error')
+        strong {{ $ctrl.error ? $ctrl.error : 'No Events Found'  }}!&nbsp;
+        | Please try another date.&nbsp;
+        a(href='/') Back Home
+
+      .alert.alert-info(role='alert' data-ng-if='$ctrl.isLoading')
+        strong Retrieving Data...
+        | We'll be finished shortly&nbsp;
+        i.glyphicon.glyphicon-repeat.rotating-spinner
+  .row
+    .col-xs-12
+      .panel.panel-primary(data-ng-repeat='event in $ctrl.events' data-ng-if='$ctrl.events.length > 0')
+        .panel-heading
+          h3.panel-title
+            a(href='{{ event.pageUrl }}')
+              span(ng-bind-html = 'event.title')
+            small.white(data-ng-if='event.lastEditedAt') &nbsp;&nbsp;(Last edited at {{ event.lastEditedAt }})
+        .panel-body
+          .row
+            .col-xs-12.col-md-4
+              img.img-responsive.margin-auto.margin-bottom-sm(ng-src='{{ event.imageUrl }}' data-ng-if='event.imageUrl')
+            .col-xs-12.col-md-8
+              div(ng-bind-html = 'event.summary')

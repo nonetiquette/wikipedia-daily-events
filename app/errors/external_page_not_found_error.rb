@@ -1,0 +1,2 @@
+class ExternalPageNotFoundError < StandardError
+end

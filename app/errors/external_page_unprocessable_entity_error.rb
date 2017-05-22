@@ -1,0 +1,2 @@
+class ExternalPageUnprocessableEntityError < StandardError
+end

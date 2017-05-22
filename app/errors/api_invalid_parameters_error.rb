@@ -1,0 +1,2 @@
+class ApiInvalidParametersError < StandardError
+end

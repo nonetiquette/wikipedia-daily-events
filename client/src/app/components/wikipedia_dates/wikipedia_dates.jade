@@ -1,0 +1,21 @@
+<navbar></navbar>
+
+.container
+  .row
+    .col-xs-12
+      h2 Choose a Date
+      p Select one of the cached dates below or choose your own from the datepicker.
+  .row
+    .col-sm-6.col-sm-offset-3
+      .input-group.margin-auto
+        .well.well-sm(data-uib-datepicker data-ng-model='$ctrl.selectedDate' data-datepicker-options='$ctrl.dateOptions' data-ng-change='$ctrl.onDateChange($ctrl.selectedDate)')
+
+  .row
+    .col-xs-12
+      h3 Cached Dates
+  .row
+    .col-xs-12
+      ul.pagination-sm(data-uib-pagination data-total-items='$ctrl.pagination.totalItems' data-ng-model='$ctrl.pagination.currentPage' data-max-size='$ctrl.pagination.maxSize' data-boundary-link-numbers='true' data-ng-change='$ctrl.onPageChange($ctrl.pagination.currentPage)')
+      ul
+        li(data-ng-repeat='date in $ctrl.dates')
+          a(data-ng-href='#/events/{{ date.permalink }}') {{ date.occurredOn | date : 'longDate' }}

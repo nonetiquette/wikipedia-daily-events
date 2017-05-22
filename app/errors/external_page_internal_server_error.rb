@@ -1,0 +1,2 @@
+class ExternalPageInternalServerError < StandardError
+end
