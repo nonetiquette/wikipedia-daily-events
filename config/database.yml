@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: clutter_development_interview
+  database: wikipedia_daily_events_development
 
 test:
   <<: *default
-  database: clutter_test_interview
+  database: wikipedia_daily_events_test
 
 production:
   <<: *default
-  database: clutter_interview
+  database: wikipedia_daily_events
