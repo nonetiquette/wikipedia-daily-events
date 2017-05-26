@@ -9,12 +9,14 @@ class Api::V1::WikipediaDatesController < Api::ApiBaseController
 
   before_action only: :show do
     expires_in 1.day, :public => true
-    validate_occurence_date_param(params[:occurrence_date_permalink])
+    @permalink = WikipediaDateHelper.normalize_permalink(params[:occurrence_date_permalink])
+    validate_occurence_date_param(@permalink)
   end
 
   def index
     @wikipedia_dates = WikipediaDate.by_occurred_on
     @wikipedia_dates_pagination = paginate @wikipedia_dates, per_page: 10
+
     if stale?(@wikipedia_dates, public: true, template: false)
       response = {
         data: @wikipedia_dates_pagination.map{|w| ::WikipediaDateSerializer.new(w, root: false).as_json },
@@ -25,11 +27,7 @@ class Api::V1::WikipediaDatesController < Api::ApiBaseController
   end
 
   def show
-    @wikipedia_date = WikipediaDate.where('permalink ~* ?', params[:occurrence_date_permalink]).first
-    
-    if !@wikipedia_date.present?
-      @wikipedia_date = ::WikipediaDateFactory.new(params[:occurrence_date_permalink]).build
-    end
+    @wikipedia_date = ::WikipediaDateService.new(@permalink).find_or_create
 
     if stale?(@wikipedia_date, public: true, template: false)
       respond_with @wikipedia_date
