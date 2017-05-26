@@ -20,7 +20,9 @@ class WikipediaDate < ActiveRecord::Base
 
   has_many :events, class_name: 'WikipediaEvent', dependent: :destroy
 
+  MINIMUM_OCCURRED_ON_DATE = Date.new(2000,1,1)
   BASE_URL = 'https://en.wikipedia.org/wiki/Portal:Current_events/'
+  PERMALINK_DATE_FORMAT = '%Y_%B_%e'
 
   validates :occurred_on, presence: true, uniqueness: true
   validates :permalink, presence: true, uniqueness: {case_sensitive: false}

@@ -55,17 +55,19 @@ gem 'api-pagination'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'annotate'
   gem 'byebug'
   gem 'awesome_print'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'guard-jshintrb'
   gem 'guard-rspec'
   gem 'rspec-rails'
+  gem 'rspec-json_expectations'
   gem 'shoulda'
   gem 'vcr'
-  gem 'annotate'
+  gem 'webmock'
 end
 
 group :development do

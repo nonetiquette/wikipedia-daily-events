@@ -21,18 +21,18 @@ This app (pseudo) summarizes events on a given day scraped from Wikipedia, built
 ## Installing
 1. `brew install postgresql`
 2. Make sure PostgreSQL is started (e.g. ` pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`)
-2. Create DBs
-`conn = PG.connect(dbname: 'postgres')`
-`conn.exec("CREATE DATABASE wikipedia_daily_events_development")`
-`conn.exec("CREATE DATABASE wikipedia_daily_events_test")`
-`conn.exec("CREATE DATABASE wikipedia_daily_events")`
-3. `bundle install`
-4. `bundle exec rake db:migrate`
-5. `cd client`
-6. Make sure node is v0.12.0
-7. `npm install`
-8. `bower install`
-9. `gulp build`
+3. Create DBs
+```conn = PG.connect(dbname: 'postgres')
+conn.exec("CREATE DATABASE wikipedia_daily_events_development")
+conn.exec("CREATE DATABASE wikipedia_daily_events_test")
+conn.exec("CREATE DATABASE wikipedia_daily_events")```
+4. `bundle install`
+5. `bundle exec rake db:migrate`
+6. `cd client`
+7. Make sure node is v0.12.0
+8. `npm install`
+9. `bower install`
+10. `gulp build`
 
 ## Starting the App
 The app consists of a Rails backend and an Angular SPA running on different ports.
