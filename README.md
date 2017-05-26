@@ -9,16 +9,13 @@ This app (pseudo) summarizes events on a given day scraped from Wikipedia, built
 * RESTful APIs
 * HTTP caching
 * Action caching
-* Model caching (To be added)
-* Background jobs (To be added)
 * Custom model and api validators
 * Custom errors and error handling
 * HTML scraping
 
 ### Frontend
-* Angular 1.5
+* Angular 1.5.x
 * Single Page App
-* Angular $cacheFactory (To be added)
 * Bootstrap UI
 
 ## Installing
@@ -32,9 +29,10 @@ This app (pseudo) summarizes events on a given day scraped from Wikipedia, built
 3. `bundle install`
 4. `bundle exec rake db:migrate`
 5. `cd client`
-6. Make sure you are on npm v.0.12.0 or so?
+6. Make sure node is v0.12.0
 7. `npm install`
 8. `bower install`
+9. `gulp build`
 
 ## Starting the App
 The app consists of a Rails backend and an Angular SPA running on different ports.
@@ -44,8 +42,19 @@ The app consists of a Rails backend and an Angular SPA running on different port
 OR from client directory, `gulp serve:full-stack`
 
 ## Running Tests
-* `rspec test`
+* `rspec`
 AND
 * `cd client`
-* `gulp protractor`
-* `gulp karma`
+* `gulp test`
+
+## TODOs
+There's always more to be done to improve optimization
+* Model caching
+* Background jobs
+* Angular $cacheFactory
+* Lazy loading
+* Lazy JSON generator + streaming
+* Protractor specs
+* Angular 2.0 upgrade
+* Angular Universal server side rendering
+* Webpack 2 tree shaking
