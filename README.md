@@ -22,10 +22,10 @@ This app (pseudo) summarizes events on a given day scraped from Wikipedia, built
 1. `brew install postgresql`
 2. Make sure PostgreSQL is started (e.g. ` pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`)
 3. Create DBs
-```conn = PG.connect(dbname: 'postgres')
-conn.exec("CREATE DATABASE wikipedia_daily_events_development")
-conn.exec("CREATE DATABASE wikipedia_daily_events_test")
-conn.exec("CREATE DATABASE wikipedia_daily_events")```
+`conn = PG.connect(dbname: 'postgres'); 
+conn.exec("CREATE DATABASE wikipedia_daily_events_development"); 
+conn.exec("CREATE DATABASE wikipedia_daily_events_test"); 
+conn.exec("CREATE DATABASE wikipedia_daily_events")`
 4. `bundle install`
 5. `bundle exec rake db:migrate`
 6. `cd client`
