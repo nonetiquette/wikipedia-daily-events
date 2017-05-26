@@ -24,7 +24,7 @@ export default class WikipediaDatesController
 
   onPageChange(pageNumber) {
     this.getDates(pageNumber);
-  };
+  }
 
   getDates(pageNumber){
     this.WikipediaDatesService.query({page: pageNumber}).then(
